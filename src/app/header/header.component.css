@@ -1,0 +1,24 @@
+.header-container {
+  font-family: 'Train One', cursive;
+  font-size: 2.5rem;
+  background-color: #090909;
+  color: #FFFFFF;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+}
+.logo {
+  cursor: pointer;
+}
+.logo:focus, .nav:focus {
+  outline: none;
+}
+.nav {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+}

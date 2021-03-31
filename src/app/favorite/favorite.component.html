@@ -1,0 +1,44 @@
+<div class="container">
+  <br>
+  <br>
+  <div *ngIf="favList.length === 0" style="text-align: center; font-size: 25px">
+    No Bank To Show
+  </div>
+  <div class="search-result">
+    <div *ngFor="let item of favList; let i = index;" class="bank-container">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <span class="head">Bank Id</span> &nbsp; {{ item.bank_id }}
+        </div>
+        <div (click)="removeFav(i);">
+          <fa-icon [icon]="starIcon" [styles]="{'stroke': '#495b83', 'color': '#495b83'}" size="lg"></fa-icon>
+        </div>
+      </div>
+      <div class="details">
+        <div>
+          <span class="head">Bank Name</span> &nbsp; {{ item.bank_name | titlecase}}
+
+        </div>
+        <div>
+          <span class="head">Branch</span> &nbsp; {{ item.branch}}
+
+        </div>
+        <div>
+          <span class="head">Address</span> &nbsp; {{ item.address | titlecase}}
+        </div>
+        <div>
+          <span class="head">City</span> &nbsp; {{ item.city | titlecase}}
+        </div>
+        <div>
+          <span class="head">District</span> &nbsp; {{ item.district | titlecase}}
+        </div>
+        <div>
+          <span class="head">IFSC</span> &nbsp; {{ item.ifsc }}
+        </div>
+        <div>
+          <span class="head">State</span> &nbsp; {{ item.state }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="searchbox-outline">
+    <div style="" class="section first">
+      <div>
+        <fa-icon [icon]="searchIcon" [styles]="{'stroke': '#495b83', 'color': '#495b83'}" size="lg">
+        </fa-icon>
+      </div>
+      <div class="searchbox">
+        <input placeholder="Search Bank" [(ngModel)]="searchQuery" (input)="search()">
+
+      </div>
+      <div>
+        <fa-icon [icon]="crossIcon" [styles]="{'stroke': '#495b83', 'color': '#495b83', 'cursor': 'pointer'}" size="lg"
+          (click)="clearSearch()">
+        </fa-icon>
+      </div>
+    </div>
+    <div style="" class="section second">
+      <div class="location">
+        <div>
+          <fa-icon [icon]="markerIcon" [styles]="{'stroke': '#495b83', 'color': '#495b83'}" size="lg">
+          </fa-icon>
+        </div>
+        <div class="dropdown">
+          <select [(ngModel)]="selectedCity" (ngModelChange)="onCityChange()">
+            <option selected disabled>City</option>
+            <option *ngFor="let item of city" [value]="item"> {{ item |titlecase }} </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="result-container">
+    <div>
+      {{searchQuery}}
+      <br>
+
+    </div>
+    <div>
+      <input class="pageLength" type="number" [(ngModel)]="pageSize" class="page-size" (input)="search()"> <span>Results
+        Per Page</span>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="loader" *ngIf="!isLoaded" style="margin:auto; margin-top: 20px;"></div>
+  <div class="search-result" *ngIf="isLoaded">
+    <div *ngFor="let item of searchResult; let i = index;" class="bank-container">
+      <div style="display: flex; justify-content: space-between;">
+        <div>
+          <span class="head">Bank Id</span> &nbsp; {{ bankList[item].bank_id }}
+        </div>
+        <div (click)="addFavorite(i);" *ngIf="!checkIfFav(i)">
+          <img src="../../assets/icons8-star-32.png" style="max-width: 28px">
+        </div>
+        <div (click)="removeFav(i);" *ngIf="checkIfFav(i)">
+          <fa-icon [icon]="starIcon" [styles]="{'stroke': '#495b83', 'color': '#495b83'}" size="lg"></fa-icon>
+        </div>
+      </div>
+      <div class="details">
+        <div>
+          <span class="head">Bank Name</span> &nbsp; {{ bankList[item].bank_name | titlecase}}
+
+        </div>
+        <div>
+          <span class="head">Branch</span> &nbsp; {{ bankList[item].branch}}
+
+        </div>
+        <div>
+          <span class="head">Address</span> &nbsp; {{ bankList[item].address | titlecase}}
+        </div>
+        <div>
+          <span class="head">City</span> &nbsp; {{ bankList[item].city | titlecase}}
+        </div>
+        <div>
+          <span class="head">District</span> &nbsp; {{ bankList[item].district | titlecase}}
+        </div>
+        <div>
+          <span class="head">IFSC</span> &nbsp; {{ bankList[item].ifsc }}
+        </div>
+        <div>
+          <span class="head">State</span> &nbsp; {{ bankList[item].state }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div style="width: 100%; text-align: center;" *ngIf="searchResult.length > 0 && isLoaded">
+    <fa-icon [icon]="prevIcon" [styles]="{'stroke': '#495b83', 'color': '#495b83'}" (click)="prevPage()"></fa-icon>
+    &nbsp; Showing {{pageNo +
+    1 }}
+    out of {{ totalPage }} pages &nbsp; <fa-icon [icon]="nextIcon" [styles]="{'stroke': '#495b83', 'color': '#495b83'}"
+      (click)="nextPage()">
+    </fa-icon>
+  </div>
+  <br>
+  <br>
+</div>

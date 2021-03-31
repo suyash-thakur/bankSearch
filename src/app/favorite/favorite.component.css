@@ -1,0 +1,24 @@
+.bank-container {
+  background-color: #fefefe;
+
+  padding: 10px;
+  margin-bottom: 25px;
+}
+.search-result {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+.head {
+  color: #495b83;
+  font-weight: bold;
+}
+.container {
+  padding-left: 10%;
+  padding-right: 10%;
+  min-height:90vh;
+  height: auto;
+}
+* {
+  font-family: 'Montserrat', sans-serif;
+}
