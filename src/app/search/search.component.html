@@ -52,7 +52,8 @@
           <span class="head">Bank Id</span> &nbsp; {{ bankList[item].bank_id }}
         </div>
         <div (click)="addFavorite(i);" *ngIf="!checkIfFav(i)">
-          <img src="../../assets/icons8-star-32.png" style="max-width: 28px">
+          <img src="https://res.cloudinary.com/diroilukd/image/upload/v1617247991/icons8-star-32_yeunju.png"
+            style="max-width: 28px">
         </div>
         <div (click)="removeFav(i);" *ngIf="checkIfFav(i)">
           <fa-icon [icon]="starIcon" [styles]="{'stroke': '#495b83', 'color': '#495b83'}" size="lg"></fa-icon>
